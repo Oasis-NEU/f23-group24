@@ -11,7 +11,7 @@ export default function App() {
   useEffect(() => {
     //fetch function
     async function fetchSongTitle() {
-      const { data, error } = await supabase.from("Groceries").select("*"); // fetch from table name
+      const { data, error } = await supabase.from("Songs").select("*"); // fetch from table name
       if (data) {
         setSongTitle(data);
       } else {
@@ -26,8 +26,11 @@ export default function App() {
     return <div>
       <h1>Song Title</h1>
       <ul>
-        {songTitle ? (songTitle.map((grocery) => {
-          return <li key={grocery.id}>{grocery.name}</li>;
+        {songTitle ? (songTitle.map((song) => {
+          return <li key={song.id}>{song.songTitle}, 
+          {song.artistName}, {song.albumTitle},{song.genre}, 
+          {song.releaseDate}</li>;
+
         }) 
         ) : (
           <p> Loading .. </p>
