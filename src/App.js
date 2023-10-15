@@ -6,12 +6,16 @@ import SongForm from "./songForm";
 
 export default function App() {
 
-  const [songTitle, setSongTitle] = useState([]);
+  const [songTitle, setSongTitle] = useState("");
+  const [artist, setArtist] = useState("");
+  const [albumTitle, setAlbumTitle] = useState("");
+  const [genre, setGenre] = useState("");
+  const [releaseDate, setReleaseDate] = useState("");
 
   useEffect(() => {
     //fetch function
     async function fetchSongTitle() {
-      const { data, error } = await supabase.from("Groceries").select("*"); // fetch from table name
+      const { data, error } = await supabase.from("Songs").select("*"); // fetch from table name
       if (data) {
         setSongTitle(data);
       } else {
@@ -26,13 +30,22 @@ export default function App() {
     return <div>
       <h1>Song Title</h1>
       <ul>
-        {songTitle ? (songTitle.map((grocery) => {
-          return <li key={grocery.id}>{grocery.name}</li>;
+        {songTitle ? (songTitle.map((song) => {
+          return <li key={song.id}>{song.name}</li>;
         }) 
         ) : (
           <p> Loading .. </p>
         )}
       </ul>
+      <div>
+          <SongForm
+          songTitle={setSongTitle}
+          artist={setArtist}
+          albumTitle={setAlbumTitle}
+          genre={setGenre}
+          releaseDate={setReleaseDate}
+          />
+      </div>
     </div>
 
   // const [songTitle, setSongTitle] = useState('')
