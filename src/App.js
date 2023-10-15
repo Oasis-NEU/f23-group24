@@ -13,7 +13,7 @@ export default function App() {
     async function fetchSongTitle() {
       const { data, error } = await supabase.from("Songs").select("*"); // fetch from table name
       if (data) {
-        setSongTitle(data);
+        //setSongTitle(data);
       } else {
         console.log(error)
       }
@@ -23,20 +23,20 @@ export default function App() {
   }, []);
 
     //Use data that was fetched:
-    return <div>
-      <h1>Song Title</h1>
-      <ul>
-        {songTitle ? (songTitle.map((song) => {
-          return <li key={song.id}>{song.songTitle}, 
-          {song.artistName}, {song.albumTitle},{song.genre}, 
-          {song.releaseDate}</li>;
+    // return <div>
+    //   <h1>Song Title</h1>
+    //   <ul>
+    //     {songTitle ? (songTitle.map((song) => {
+    //       return <li key={song.id}>{song.songTitle}, 
+    //       {song.artistName}, {song.albumTitle},{song.genre}, 
+    //       {song.releaseDate}</li>;
 
-        }) 
-        ) : (
-          <p> Loading .. </p>
-        )}
-      </ul>
-    </div>
+    //     }) 
+    //     ) : (
+    //       <p> Loading .. </p>
+    //     )}
+    //   </ul>
+    // </div>
 
   // const [songTitle, setSongTitle] = useState('')
   // return (
