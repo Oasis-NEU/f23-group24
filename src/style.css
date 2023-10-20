@@ -1,0 +1,97 @@
+html {
+    font-family: Helvetica, Arial, sans-serif;
+}
+body {
+    margin: 0;
+}
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+#menu-list {
+    display: flex;
+    list-style-type: none;
+    gap: 20px;
+    font-weight: bold;
+}
+#nav-left {
+    display: flex;
+    align-items: center;
+}
+#sign-in-link {
+    color: black;
+    text-decoration: none;
+}
+#nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+#banner {
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(1, 20, 123);
+    color: white;
+}
+#header-bg {
+    width: 100% /* making bg scale to 100% page width */
+}
+header {
+    position: relative;
+}
+#header-content {
+    position: absolute;
+    top: 0;
+    left: 10%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    color: white;
+}
+#shop-now-btn {
+    background-color: #FBD427;
+    border-color: #FBD427;
+    padding: 15px;
+    border: none;
+    border-radius: 999px; /* create a pill button */
+    font-weight: bold;
+}
+.card-img {
+    width: 30vw;
+    height: 30vw;
+    object-fit: cover;
+}
+.card-content {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+}
+.card-content .title {
+    font-style: italic;
+    font-weight: normal;
+}
+.card-content .subtitle {
+    text-align: center;
+    padding-bottom: 50px;
+}
+.card-content .link {
+    font-weight: bold;
+    color: black;
+}
+.card {
+    width: min-content;
+}
+#movie-cards {
+    background-color: rgb(241, 242, 243);
+    display: flex;
+    justify-content: space-around;
+    padding: 30px;
+}
