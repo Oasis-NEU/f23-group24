@@ -1,6 +1,7 @@
 import './App.css';
 import { useState, useEffect } from "react";
 import { supabase } from "./supabase";
+import "./style.css";
 
 import SongForm from "./songForm";
 // import HomePage from "./homepage";
@@ -73,6 +74,7 @@ export default function App() {
                 <div class="card">
                     <img
                         class="card-img"
+                        alt="Lover Album"
                 src="https://upload.wikimedia.org/wikipedia/en/c/cd/Taylor_Swift_-_Lover.png"/>
                 <div class="card-content">
                     <h3 class="title">Cruel Summer: Taylor Swift</h3>
@@ -83,6 +85,7 @@ export default function App() {
                 <div class="card">
                         <img
                         class="card-img"
+                        alt="FATD album"
                         src="https://static.stereogum.com/uploads/2023/08/For-All-The-Dogs-1692825000-1000x997.jpeg"/>
                         <div class="card-content">
                         <h3 class="title">IDGAF - Drake ft. Yeat</h3>
@@ -93,6 +96,7 @@ export default function App() {
                 <div class="card">
                     <img
                     class="card-img"
+                    alt="Bad Bunny"
                     src="https://s.abcnews.com/images/GMA/bad-bunny-3-ht-thg-231013_1697210407180_hpEmbed_1x1_992.jpg"/>
                     <div class="card-content">
                     <h3 class="title">MONACO - Bad Bunny</h3>
@@ -108,6 +112,7 @@ export default function App() {
             <div class="card">
                 <img
                     class="card-img"
+                    alt="Fred Again"
             src="https://www.fredagain.com/assets/img/albumArt.png"/>
             <div class="card-content">
                 <h3 class="title">Deliliah (Pull me out of this) - Fred again...</h3>
@@ -120,6 +125,7 @@ export default function App() {
             <div class="card">
                     <img
                     class="card-img"
+                    alt="the 1975"
                     src="https://upload.wikimedia.org/wikipedia/en/0/03/The_1975_%28album%29_by_The_1975.png"/>
                     <div class="card-content">
                     <h3 class="title">Robbers - The 1975</h3>
@@ -131,6 +137,7 @@ export default function App() {
             <div class="card">
                 <img
                 class="card-img"
+                alt="Faye Webster"
                 src="https://media.pitchfork.com/photos/5cc0cb6c71b196b2a447fe9a/1:1/w_800,h_800,c_limit/FayeWebster_AtlantaMillionairesClub.jpg"/>
                 <div class="card-content">
                 <h3 class="title">Kingston - Faye Webster</h3>
