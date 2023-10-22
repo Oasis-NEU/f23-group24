@@ -92,12 +92,12 @@ export default function App() {
       {!loggedIn && <a href="http://localhost:8888" > Login to Spotify! </a>}
       {loggedIn && (
         <>
-          <div>Now Playing : (nowPlaying.name)</div>
-          <div> <img> src = {nowPlaying.albumArt} style = {{height:150}}</img> </div>
+          <div> Now Playing : {nowPlaying.name} </div>
+          <div> <img src = {nowPlaying.albumArt} style = {{height:150}}/> </div>
         </>
       )}
       {loggedIn && (
-        <button>onClick = {() => getNowPlaying()} Check now Playing</button>
+        <button onClick = {() => getNowPlaying()}>Check now Playing</button>
       )} 
 
 
@@ -113,7 +113,7 @@ export default function App() {
                 <ul id="menu-list">
                     <li>New Review</li>
                     <a id="userProfile.html" href="login.html">Profile</a>
-                    <a id="login.html" href="login.html">Log In</a>
+                    <a id="login.html" href="http://localhost:8888">Log In</a>
                     </ul>
             </div>
 
