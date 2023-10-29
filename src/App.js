@@ -6,9 +6,17 @@ import "./style.css";
 import SongForm from "./songForm";
 // import HomePage from "./homepage";
 
+//spotify search imports
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {Container, InputGroup, FormControl, Button, Row, Cards, Card } from 'react-bootstrap';
 
+//spotify login
 import SpotifyWebApi from 'spotify-web-api-js';
 const spotifyApi = new SpotifyWebApi();
+
+//spotify search
+const CLIENT_ID = "29eac716ed5d4813a7a902b307f735bb";
+const CLIENT_SECRET = "a1df483d11ac47019c68d22b479f8385";
 
 const getTokenFromUrl = () => {
   return window.location.hash.substring(1).split('&').reduce((initial, item) => {
@@ -27,6 +35,28 @@ export default function App() {
   const [genre, setGenre] = useState("");
   const [releaseDate, setReleaseDate] = useState("");
 
+  const[searchInput, setSearchInput] = useState("");
+  async function search() {
+    console.log("Search for " + searchInput);
+
+    //Get request using search to get Artist ID
+    var artistParameters = {
+      method: 'GET',
+      headers: {
+        'Content-Type' : 'application/json',
+        'Authorization'  :'Bearer ' + spotifyToken
+      }
+    }
+    var artistID = await fetch('https://api.spotify.com/v1/search?q=' + searchInput + '&type=artist', artistParameters)
+      .then(response => response.json())
+      .then(data => console.log(data))
+    //Get rquest with Artist ID grab all albums
+
+    //Display albums
+  }
+  
+
+  //spotify login
   const [spotifyToken, setSpotifyToken] = useState("");
   const [nowPlaying, setNowPlaying] = useState({});
   const [loggedIn, setLoggedIn] = useState(false);
@@ -89,6 +119,36 @@ export default function App() {
     // </div>
 // =======
     return <div>
+
+      <Container>
+        <InputGroup className = "mb-3" size = "lg">
+          <FormControl 
+            placeholder = 'Search For Artist'
+            type = "input"
+            onKeyPress={event => {
+              if (event.key == 'Enter'){
+                search();
+              }
+            }}
+            onChange = {event => setSearchInput(event.target.value) }
+          />
+          <Button onClick={search}>
+            Search
+          </Button>
+        </InputGroup>
+      </Container>
+      <Container>
+        <Row className='mx-2 row row-cols-5'>
+        <Card>
+          <Card.Img src="#" />
+          <Card.Body>
+            <Card.Title>Album Name Here</Card.Title>
+          </Card.Body>
+        </Card>
+        </Row>
+      </Container>
+
+
       {!loggedIn && <a href="http://localhost:8888" > Login to Spotify! </a>}
       {loggedIn && (
         <>
