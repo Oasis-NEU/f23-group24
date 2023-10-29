@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import { supabase } from "./supabase";
 
 import SongForm from "./songForm";
+import songFormPage from "./songFormPage";
+import ReviewForm from "./reviewForm";
 // import HomePage from "./homepage";
 
 
@@ -13,6 +15,8 @@ export default function App() {
   const [albumTitle, setAlbumTitle] = useState("");
   const [genre, setGenre] = useState("");
   const [releaseDate, setReleaseDate] = useState("");
+  const [review, setReview] = useState("");
+  const [stars, setStars] = useState("");
 
   useEffect(() => {
     //fetch function
@@ -57,6 +61,7 @@ export default function App() {
                     <li>New Review</li>
                     <a id="userProfile.html" href="login.html">Profile</a>
                     <a id="login.html" href="login.html">Log In</a>
+                    <a id="songFormPage.js" href="songFormPage.js">Submit a Song</a>
                     </ul>
             </div>
 
@@ -140,15 +145,15 @@ export default function App() {
 
             </div>
         </section>
-      {/* <h1>Song Title</h1>
-      <ul>
+      <h1>Song Title</h1>
+      {/* <ul>
         {songTitle ? (songTitle.map((song) => {
           return <li key={song.id}>{song.name}</li>;
         }) 
         ) : (
           <p> Loading .. </p>
         )}
-      </ul>
+      </ul> */}
       <div>
           <SongForm
           songTitle={setSongTitle}
@@ -157,7 +162,14 @@ export default function App() {
           genre={setGenre}
           releaseDate={setReleaseDate}
           />
-      </div> */}
+      </div>
+
+      <div>
+          <ReviewForm
+          review={setReview}
+          stars = {setStars}
+          />
+      </div>
     </div>
 // >>>>>>> 3eb41fbaf1d02c8633129a2090fc5f0de1b65a7b
 
