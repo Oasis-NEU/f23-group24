@@ -62,7 +62,7 @@ header {
     border-radius: 999px; /* create a pill button */
     font-weight: bold;
 }
-.card-img {
+.card-image {
     width: 30vw;
     height: 30vw;
     object-fit: cover;

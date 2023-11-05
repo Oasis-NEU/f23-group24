@@ -146,7 +146,7 @@ export default function App() {
         </InputGroup>
       </Container>
       <Container>
-        <Row className='no-gutters row row-cols-3'>
+        <Row className='no-gutters row row-cols-4'>
           {albums.map( (album, i) => {
             console.log(album);
             return(
@@ -202,7 +202,7 @@ export default function App() {
             <section id="movie-cards">
                 <div class="card">
                     <img
-                        class="card-img"
+                        class="card-image"
                         alt="Lover Album"
                 src="https://upload.wikimedia.org/wikipedia/en/c/cd/Taylor_Swift_-_Lover.png"/>
                 <div class="card-content">
@@ -213,7 +213,7 @@ export default function App() {
     
                 <div class="card">
                         <img
-                        class="card-img"
+                        class="card-image"
                         alt="FATD album"
                         src="https://static.stereogum.com/uploads/2023/08/For-All-The-Dogs-1692825000-1000x997.jpeg"/>
                         <div class="card-content">
@@ -224,7 +224,7 @@ export default function App() {
     
                 <div class="card">
                     <img
-                    class="card-img"
+                    class="card-image"
                     alt="Bad Bunny"
                     src="https://s.abcnews.com/images/GMA/bad-bunny-3-ht-thg-231013_1697210407180_hpEmbed_1x1_992.jpg"/>
                     <div class="card-content">
@@ -240,7 +240,7 @@ export default function App() {
         <section id="movie-cards">
             <div class="card">
                 <img
-                    class="card-img"
+                    class="card-image"
                     alt="Fred Again"
             src="https://www.fredagain.com/assets/img/albumArt.png"/>
             <div class="card-content">
@@ -253,7 +253,7 @@ export default function App() {
 
             <div class="card">
                     <img
-                    class="card-img"
+                    class="card-image"
                     alt="the 1975"
                     src="https://upload.wikimedia.org/wikipedia/en/0/03/The_1975_%28album%29_by_The_1975.png"/>
                     <div class="card-content">
@@ -265,7 +265,7 @@ export default function App() {
 
             <div class="card">
                 <img
-                class="card-img"
+                class="card-image"
                 alt="Faye Webster"
                 src="https://media.pitchfork.com/photos/5cc0cb6c71b196b2a447fe9a/1:1/w_800,h_800,c_limit/FayeWebster_AtlantaMillionairesClub.jpg"/>
                 <div class="card-content">
