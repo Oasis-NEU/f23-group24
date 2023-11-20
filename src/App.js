@@ -2,8 +2,17 @@ import './App.css';
 import { useState, useEffect } from "react";
 import { supabase } from "./supabase";
 import "./style.css";
+// import {Routes, Route, useNavigate} from 'react-router-dom';
+// Routers
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  // Navigate,
+  useNavigate,
+} from "react-router-dom";
 
-import SongForm from "./songForm";
+import ReviewForm from "./reviewForm.js";
 // import HomePage from "./homepage";
 
 //spotify search imports
@@ -26,14 +35,27 @@ const getTokenFromUrl = () => {
   }, {});
 };
 
-export default function App() {
+  // Navigate to review page
 
+// const navigateReviewForm = () => {
+//   // 👇️ navigate to /
+//     navigate('/reviewForm.js');
+//   };
+
+
+
+
+
+export default function App() {
+  // Navigate to review page
+  const navigate = useNavigate();
+  const routeReviewForm = (album) => {
+    let path = `/reviewForm/${album}`;
+    navigate(path);
+  }
   
-  const [songTitle, setSongTitle] = useState("");
-  const [artist, setArtist] = useState("");
-  const [albumTitle, setAlbumTitle] = useState("");
-  const [genre, setGenre] = useState("");
-  const [releaseDate, setReleaseDate] = useState("");
+  // const [review, setReview] = useState("");
+  // const [rating, setRating] = useState("");
 
   const [albums, setAlbums] = useState([]);
   const[searchInput, setSearchInput] = useState("");
@@ -109,23 +131,6 @@ export default function App() {
     fetchSongTitle();
   }, []);
 
-    //Use data that was fetched:
-// <<<<<<< HEAD
-    // return <div>
-    //   <h1>Song Title</h1>
-    //   <ul>
-    //     {songTitle ? (songTitle.map((song) => {
-    //       return <li key={song.id}>{song.songTitle}, 
-    //       {song.artistName}, {song.albumTitle},{song.genre}, 
-    //       {song.releaseDate}</li>;
-
-    //     }) 
-    //     ) : (
-    //       <p> Loading .. </p>
-    //     )}
-    //   </ul>
-    // </div>
-// =======
     return <div>
 
       <Container>
@@ -155,6 +160,7 @@ export default function App() {
                 <Card.Body>
                   <Card.Title>{album.name}</Card.Title>
                 </Card.Body>
+                <Button onClick={event => {routeReviewForm(album)}}>Rate</Button>
               </Card>
             )
           })}
@@ -185,7 +191,7 @@ export default function App() {
                 width="80px"/>
                 <ul id="menu-list">
                     <li>New Review</li>
-                    <a id="userProfile.html" href="login.html">Profile</a>
+                    <a id="userProfile.html" href="/login.html">Profile</a>
                     <a id="login.html" href="http://localhost:8888">Log In</a>
                     </ul>
             </div>
@@ -276,35 +282,9 @@ export default function App() {
 
             </div>
         </section>
-      {/* <h1>Song Title</h1>
-      <ul>
-        {songTitle ? (songTitle.map((song) => {
-          return <li key={song.id}>{song.name}</li>;
-        }) 
-        ) : (
-          <p> Loading .. </p>
-        )}
-      </ul>
-      <div>
-          <SongForm
-          songTitle={setSongTitle}
-          artist={setArtist}
-          albumTitle={setAlbumTitle}
-          genre={setGenre}
-          releaseDate={setReleaseDate}
-          />
-      </div> */}
+        <div>
     </div>
-// >>>>>>> 3eb41fbaf1d02c8633129a2090fc5f0de1b65a7b
-
-  // const [songTitle, setSongTitle] = useState('')
-  // return (
-  //   <div className="App">
-  //     <SongForm
-  //       songTitle = {songTitle} 
-
-
-  //     />
-  //   </div>
+    </div>
+    
 }
 
