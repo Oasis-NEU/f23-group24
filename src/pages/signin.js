@@ -50,6 +50,11 @@ const SignIn = () => {
         })
       }
 
+      const signOutNow = () => {
+        localStorage.removeItem("spotifyToken");
+        window.location.reload();
+      }
+
 
     return <div>
     {/* <div style="text-align: center;"> */}
@@ -65,8 +70,11 @@ const SignIn = () => {
     {loggedIn && (
     <button onClick = {() => getNowPlaying()}>Check now Playing</button>
     )} 
+    {loggedIn && (
+    <button onClick = {() => signOutNow() }>Sign out</button>  
+    )} 
   </center>
-          
+  
     </div>
 
 
