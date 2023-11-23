@@ -1,15 +1,12 @@
 import './App.css';
 import { useState, useEffect } from "react";
-import { supabase } from "./supabase";
-import "./style.css";
+import "./pages/style.css";
 import "./pages/search"
 import "./pages/home"
 import { BrowserRouter as Router, Routes, Route }
     from 'react-router-dom';
 import Navbar from './components/index';
-import { useLocation } from 'react-router-dom';
 
-import SongForm from "./songForm";
 // import HomePage from "./homepage";
 
 //spotify search imports
@@ -21,6 +18,7 @@ import SpotifyWebApi from 'spotify-web-api-js';
 import Search from './pages/search';
 import Home from './pages/home';
 import SignIn from './pages/signin';
+// import ReviewForm from './reviewForm';
 const spotifyApi = new SpotifyWebApi();
 
 //spotify search
@@ -36,13 +34,6 @@ const getTokenFromUrl = () => {
 };
 
 export default function App() {
-
-  
-  const [songTitle, setSongTitle] = useState("");
-  const [artist, setArtist] = useState("");
-  const [albumTitle, setAlbumTitle] = useState("");
-  const [genre, setGenre] = useState("");
-  const [releaseDate, setReleaseDate] = useState("");
 
   const [albums, setAlbums] = useState([]);
   const[searchInput, setSearchInput] = useState("");
@@ -105,20 +96,6 @@ export default function App() {
     })
   }
 
-  useEffect(() => {
-    //fetch function
-    async function fetchSongTitle() {
-      const { data, error } = await supabase.from("Songs").select("*"); // fetch from table name
-      if (data) {
-        //setSongTitle(data);
-      } else {
-        console.log(error)
-      }
-    }
-
-    fetchSongTitle();
-  }, []);
-
   
 
     return <div>
@@ -133,26 +110,6 @@ export default function App() {
         <button onClick = {() => getNowPlaying()}>Check now Playing</button>
       )}  */}
 
-      {/* <h1>Song Title</h1>
-      <ul>
-        {songTitle ? (songTitle.map((song) => {
-          return <li key={song.id}>{song.name}</li>;
-        }) 
-        ) : (
-          <p> Loading .. </p>
-        )}
-      </ul>
-      <div>
-          <SongForm
-          songTitle={setSongTitle}
-          artist={setArtist}
-          albumTitle={setAlbumTitle}
-          genre={setGenre}
-          releaseDate={setReleaseDate}
-          />
-      </div> */}
-
-
         <Router>
         <Navbar />
             <Routes>
@@ -163,16 +120,5 @@ export default function App() {
             </Routes>
         </Router>
     </div>
-// >>>>>>> 3eb41fbaf1d02c8633129a2090fc5f0de1b65a7b
-
-  // const [songTitle, setSongTitle] = useState('')
-  // return (
-  //   <div className="App">
-  //     <SongForm
-  //       songTitle = {songTitle} 
-
-
-  //     />
-  //   </div>
 }
 

@@ -4,6 +4,31 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+import ReviewForm from './pages/reviewForm';
+
+const router = createBrowserRouter([
+  // {
+  //   path: "/",
+  //   element: <App />,
+  // },
+  {
+    path: "/reviewForm/:album_id",
+    element: <ReviewForm/>
+  }
+]);
+
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <App />
+    <RouterProvider router={router} />
+  </React.StrictMode>
+);
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
