@@ -3,11 +3,20 @@ import {Container, InputGroup, FormControl, Button, Row, Cards, Card } from 'rea
 import React from 'react';
 import SpotifyWebApi from 'spotify-web-api-js';
 import { useState, useEffect, useMemo } from "react";
-import { useLocation } from 'react-router-dom';
-
-
+// Routers
+import {
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 
 const Search = () => {  
+
+  // Navigate to review page
+  const navigate = useNavigate();
+  const routeReviewForm = (album) => {
+    let path = `/reviewForm/${album}`;
+    navigate(path);
+  }
 
   const location = useLocation();
   console.log(location);
@@ -124,9 +133,10 @@ const Search = () => {
             <Card.Img src={album.images[0].url} />
             <Card.Body>
               <Card.Title>{album.name}</Card.Title>
-              <Button onClick = {console.log('Add form here')}>
+              {/* <Button onClick = {console.log('Add form here')}>
                 Rate Me
-              </Button>
+              </Button> */}
+              <Button onClick={event => {routeReviewForm(album)}}>Rate</Button>
             </Card.Body>
           </Card>
         )
