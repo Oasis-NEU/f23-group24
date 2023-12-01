@@ -3,11 +3,13 @@ import {Container, InputGroup, FormControl, Button, Row, Cards, Card } from 'rea
 import React from 'react';
 import SpotifyWebApi from 'spotify-web-api-js';
 import { useState, useEffect, useMemo } from "react";
+import { supabase } from "./supabase";
 // Routers
 import {
   useLocation,
   useNavigate,
 } from "react-router-dom";
+import FetchRatings from './fetchRatings.js';
 
 const Search = () => {  
 
@@ -38,6 +40,9 @@ const Search = () => {
     const [spotifyToken, setSpotifyToken] = useState("");
     const [nowPlaying, setNowPlaying] = useState({});
     const [loggedIn, setLoggedIn] = useState(false);
+
+    const [fetchError, setFetchError] = useState(null)
+    const [ratings, setRatings] = useState(null)
   
     useEffect(() => {
       console.log("This is what we derived:" + getTokenFromUrl(location));
@@ -128,11 +133,45 @@ const Search = () => {
     <Row className='no-gutters row row-cols-4'>
       {albums.map( (album, i) => {
         console.log(album);
+        console.log('Album ID: ' + album.id)
         return(
           <Card className = 'text-white bg-info'>
             <Card.Img src={album.images[0].url} />
             <Card.Body>
               <Card.Title>{album.name}</Card.Title>
+                  {/* {FetchRatings(album.id)} */}
+                  { 
+                    async () => {
+                    const { data, error } = await supabase
+                    .from('Ratings')
+                    .select('album_id, rating, review')
+                    .eq('album_id', album.id)
+                    .order('rating', {ascending: false})
+                    .limit(1)
+
+                    if (error) {
+                    setFetchError('Could not fetch ratings')
+                    setRatings(null)
+                    console.log(error)
+                    }
+                    if (data) {
+                        setRatings(data)
+                        setFetchError(null)
+                    }
+                  }}
+                  {console.log('Album ID query: ' + ratings)}
+
+                    <div>
+                      <p>Album ID: {album.id} Rating: {ratings}</p>
+                      { async () => {
+                        if (ratings != null) {
+                      ratings.map(rating => (
+                          <p>Top Rating: {rating.rating}</p>
+                        ))}
+                      }
+                      }
+                  </div>
+
               {/* <Button onClick = {console.log('Add form here')}>
                 Rate Me
               </Button> */}
