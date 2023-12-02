@@ -108,7 +108,7 @@ header {
 }
 
 .rating-wrap{
-    max-width: 480px;
+    max-width: 600px;
     margin: auto;
     padding: 15px;
     box-shadow: 0 0 3px 0 rgba(0, 0, 0, .2);
@@ -116,8 +116,9 @@ header {
 }
 
 .center{
-    width: 135px;
+    width: 200px;
     margin: auto;
+    padding: 15px;
 }
 
 #rating-value{
